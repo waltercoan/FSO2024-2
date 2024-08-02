@@ -1,0 +1,18 @@
+@startuml
+skinparam classAttributeIconSize 0
+' left to right direction
+caption Diagrama de entidades
+namespace entidades {
+    class Cliente {
+        - String nome
+        - String endereco
+        + Cliente(nome:String)
+        + getNome():String
+        + setNome(nome:String):void
+        + getEndereco():String
+        + setEndereco(endereco:String ):void
+        + getCidade():Cidade
+        + setCidade(cidade:Cidade):void
+        + toString():String
+    }
+@enduml

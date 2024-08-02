@@ -1,0 +1,12 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+    "plantuml.commandArgs": [],
+    "plantuml.diagramsRoot": "./diagramas",
+    "plantuml.exportOutDir": "./diagramas/png",
+    "plantuml.exportFormat": "png",
+    "plantuml.exportSubFolder": false
+}
