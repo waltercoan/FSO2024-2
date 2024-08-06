@@ -15,4 +15,10 @@ namespace entidades {
         + setCidade(cidade:Cidade):void
         + toString():String
     }
+    class Cidade {
+        - String nome
+        + Cidade(nome:String)
+    }
+
+    Cliente "-cidade *" -> "1" Cidade
 @enduml
