@@ -20,5 +20,12 @@ namespace entidades {
         + Cidade(nome:String)
     }
 
+    class Pokemon {
+        - String nome
+        + Pokemon(nome:String)
+        + toString():String
+    }
+
     Cliente "-cidade *" -> "1" Cidade
+    Cliente "-listaPokemon 1" -> "*" Pokemon
 @enduml
