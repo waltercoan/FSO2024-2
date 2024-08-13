@@ -25,7 +25,21 @@ namespace entidades {
         + Pokemon(nome:String)
         + toString():String
     }
+}
+namespace telinha {
+    class MinhaTelinha {
 
+    }
+    
+}
+namespace controlador {
+    class ControladorTelinha {
+    }
+    
+}
+    MinhaTelinha --|> javax.swing.JFrame
+    MinhaTelinha --> controlador.ControladorTelinha
+    ControladorTelinha ..|> java.awt.event.ActionListener
     Cliente "-cidade *" -> "1" Cidade
     Cliente "-listaPokemon 1" -> "*" Pokemon
 @enduml
