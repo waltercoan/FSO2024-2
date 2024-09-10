@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Fsoweb20242Application<fsoweb20242>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.univille.fsoweb20242.Fsoweb20242Application",
+            "projectName": "fsoweb20242",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

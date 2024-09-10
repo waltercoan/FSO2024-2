@@ -1,0 +1,69 @@
+@startuml
+skinparam classAttributeIconSize 0
+caption Diagrama de entidades
+namespace entity {
+    class Cliente {
+        - id:long
+        - nome:String
+        - endereco:String
+
+        + getId():long
+        + setId(id:long):void
+        + getNome():String
+        + setNome(nome:String):void
+        + getEndereco():String
+        + setEndereco(endereco:String ):void
+        
+    }
+    /'class Cidade {
+        - long id
+        - String nome
+        - String estado
+
+        + getId():long
+        + setId(id:long):void
+        + getNome():String
+        + setNome(nome:String):void
+        + getEstado():String
+        + setEstado(estado:String ):void
+    }
+    class Pedido {
+        - long id
+        - Date data
+
+        + getId():long
+        + setId(id:long):void
+        + getData():Date
+        + setData(data:Date):void
+    }
+    class ItemPedido {
+        - long id
+        - int quantidade
+        - float valor
+
+        + getId():long
+        + setId(id:long):void
+        + getQuantidade():int
+        + setQuantidade(quantidade:int):void
+        + getValor():float
+        + setValor(valor:float):void
+    }
+    class Produto {
+        - long id
+        - String descricao
+        - float valor
+
+        + getId():long
+        + setId(id:long):void
+        + getDescricao():int
+        + setDescricao(descricao:String):void
+        + getValor():float
+        + setValor(valor:float):void
+    }
+
+    Cliente "cliente *" -> "1" Cidade
+    Pedido "colItens 1" -> "*" ItemPedido
+    ItemPedido "produto *" -> "1" Produto
+    '/
+}
+@enduml
