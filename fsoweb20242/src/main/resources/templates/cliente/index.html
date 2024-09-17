@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head th:include="layout :: htmlhead"></head>
+    <body>
+        
+        <nav th:replace="layout :: menu">(menu)</nav>
+        <main class="container">
+            <h1>Clientes</h1>
+            <table class="table">
+                <thead>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                </thead>
+                <tbody>
+                    <tr th:each="umCliente : ${listaClientes}">
+                        <td th:text="${umCliente.nome}"></td>
+                        <td th:text="${umCliente.endereco}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        
+
+
+        <div th:include="layout :: footer">(footer)</div>
+    </body>
+</html>
