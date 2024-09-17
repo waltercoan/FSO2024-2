@@ -11,6 +11,7 @@
 
     <modules>
         <module>fsoweb20242</module>
+        <module>fsoapi20242</module>
     </modules>
 
 </project>

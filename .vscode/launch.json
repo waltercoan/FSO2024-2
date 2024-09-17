@@ -9,6 +9,16 @@
             "projectName": "fsoweb20242",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Fsoapi20242Application<fsoapi20242>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.univille.fsoapi20242.Fsoapi20242Application",
+            "projectName": "fsoapi20242",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
