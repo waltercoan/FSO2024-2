@@ -10,11 +10,13 @@
                 <thead>
                     <th>Nome</th>
                     <th>Endereço</th>
+                    <th>Data Nascimento</th>
                 </thead>
                 <tbody>
                     <tr th:each="umCliente : ${listaClientes}">
                         <td th:text="${umCliente.nome}"></td>
                         <td th:text="${umCliente.endereco}"></td>
+                        <td th:text="${umCliente.dataNascimento}"></td>
                     </tr>
                 </tbody>
             </table>
