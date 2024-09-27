@@ -22,8 +22,8 @@ public class ClienteServiceImpl implements ClienteService{
 
     @Override
     public Cliente save(Cliente cliente) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        repository.save(cliente);
+        return cliente;
     }
 
     @Override
