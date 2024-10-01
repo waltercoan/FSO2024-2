@@ -14,12 +14,18 @@
                     <th>Nome</th>
                     <th>Endereço</th>
                     <th>Data Nascimento</th>
+                    <th></th>
                 </thead>
                 <tbody>
                     <tr th:each="umCliente : ${listaClientes}">
                         <td th:text="${umCliente.nome}"></td>
                         <td th:text="${umCliente.endereco}"></td>
                         <td th:text="${umCliente.dataNascimento}"></td>
+                        <td>
+                            <a th:href="@{'/clientes/alterar/' + ${umCliente.id}}"
+                                class="btn btn-warning"
+                            >Alterar</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

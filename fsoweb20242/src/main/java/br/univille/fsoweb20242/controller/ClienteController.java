@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,6 +41,14 @@ public class ClienteController {
     public ModelAndView save(Cliente cliente){
         service.save(cliente);
         return new ModelAndView("redirect:/clientes");
+    }
+
+    @GetMapping("/alterar/{id}")
+    public ModelAndView alterar(@PathVariable("id") long id){
+        var umCliente = service.getById(id);
+
+        return new ModelAndView("cliente/form", 
+                    "cliente",umCliente);
     }
 
     

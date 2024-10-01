@@ -34,8 +34,10 @@ public class ClienteServiceImpl implements ClienteService{
 
     @Override
     public Cliente getById(long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+        var retorno = repository.findById(id);
+        if(retorno.isPresent())
+            return retorno.get();
+        return null;
     }
     
 }

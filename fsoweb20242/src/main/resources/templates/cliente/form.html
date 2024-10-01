@@ -9,6 +9,10 @@
             <form th:action="@{/clientes}" 
                     method="POST"
                     th:object="${cliente}">
+
+                <input type="hidden" th:field="*{id}">
+
+
                 <div class="form-group">
                     <label for="txtnome">Nome</label>
                     <input id="txtnome"
