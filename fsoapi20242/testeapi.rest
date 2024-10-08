@@ -21,3 +21,7 @@ Content-Type: application/json
     "endereco": "Rua lalalalla 200",
     "dataNascimento": "2024-10-01"
 }
+
+### DELETE CLIENTES
+DELETE http://localhost:8081/api/v1/clientes/1
+Content-Type: application/json

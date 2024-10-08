@@ -51,5 +51,14 @@ public class ClienteController {
                     "cliente",umCliente);
     }
 
-    
+    @GetMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable("id") long id){
+        var umCliente = service.getById(id);
+        if(umCliente != null){
+            service.delete(id);
+        }
+        return new ModelAndView("redirect:/clientes");
+    }
+
+
 }
