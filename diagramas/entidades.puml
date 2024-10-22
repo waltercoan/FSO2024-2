@@ -15,7 +15,7 @@ namespace entity {
         + setEndereco(endereco:String ):void
         
     }
-    /'class Cidade {
+    class Cidade {
         - long id
         - String nome
         - String estado
@@ -27,7 +27,7 @@ namespace entity {
         + getEstado():String
         + setEstado(estado:String ):void
     }
-    class Pedido {
+    /'class Pedido {
         - long id
         - Date data
 
@@ -61,9 +61,10 @@ namespace entity {
         + setValor(valor:float):void
     }
 
-    Cliente "cliente *" -> "1" Cidade
+    
     Pedido "colItens 1" -> "*" ItemPedido
     ItemPedido "produto *" -> "1" Produto
     '/
+    Cliente "*" -> "1" Cidade
 }
 @enduml
