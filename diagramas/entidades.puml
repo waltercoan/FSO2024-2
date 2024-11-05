@@ -27,7 +27,7 @@ namespace entity {
         + getEstado():String
         + setEstado(estado:String ):void
     }
-    /'class Pedido {
+    class Pedido {
         - long id
         - Date data
 
@@ -64,7 +64,6 @@ namespace entity {
     
     Pedido "colItens 1" -> "*" ItemPedido
     ItemPedido "produto *" -> "1" Produto
-    '/
     Cliente "*" -> "1" Cidade
 }
 @enduml

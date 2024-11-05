@@ -6,16 +6,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Cidade {
+public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nome;
-    private String estado;
-
-    public String toString(){
-        return getNome();
-    }
+    private String descricao;
+    private float valor;
 
     public long getId() {
         return id;
@@ -23,18 +19,17 @@ public class Cidade {
     public void setId(long id) {
         this.id = id;
     }
-    public String getNome() {
-        return nome;
+    public String getDescricao() {
+        return descricao;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
-    public String getEstado() {
-        return estado;
+    public float getValor() {
+        return valor;
     }
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setValor(float valor) {
+        this.valor = valor;
     }
-
     
 }
