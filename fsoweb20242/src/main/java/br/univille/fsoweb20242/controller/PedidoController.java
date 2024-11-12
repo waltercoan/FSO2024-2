@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.univille.fsoweb20242.entity.ItemPedido;
@@ -80,6 +81,21 @@ public class PedidoController {
         
 
         return new ModelAndView("pedido/form", dados);
+    }
+    @PostMapping(params = "removeitem")
+    public ModelAndView removerItem(@RequestParam("removeitem") int index, 
+                                Pedido pedido){
+        pedido.getItens().remove(index);
+
+        var listaProdutos = produtoService.getAll();
+
+        HashMap<String,Object> dados = 
+            new HashMap<>();
+        dados.put("pedido",pedido);
+        dados.put("novoItem", new ItemPedido());
+        dados.put("listaProdutos",listaProdutos);
+
+        return new ModelAndView("pedido/form",dados);
     }
 
     @GetMapping("/delete/{id}")

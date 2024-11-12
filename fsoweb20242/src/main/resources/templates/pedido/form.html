@@ -50,7 +50,14 @@
 
                                     <input type="hidden"
                                         th:field="*{itens[__${stat.index}__].valor}">
-
+                                    
+                                    <td>
+                                        <button class="btn btn-danger"
+                                            type="submit"
+                                            name="removeitem"
+                                            th:value="__${stat.index}__">Remover</button>
+                                    </td>
+    
                                 
                                 </tr>
                             </tbody>
