@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head th:include="layout :: htmlhead"></head>
+    <body>
+        
+        <nav th:replace="layout :: menu">(menu)</nav>
+        <main class="container">
+            <h1>Pedidos</h1>
+
+            <a href="/pedidos/novo" class="btn btn-primary">Novo</a>
+
+            <table class="table" id="tabelapedidos">
+                <thead>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr th:each="umpedido : ${listaPedidos}">
+                        <td th:text="${umpedido.data}"></td>
+                        <td>
+                            <a th:href="@{'/pedidos/alterar/' + ${umpedido.id}}"
+                                class="btn btn-warning"
+                            >Alterar</a>
+
+                            <button
+                                class="btn btn-danger js-delete"
+                                th:data-id="${umpedido.id}"
+                            >Excluir</button>
+
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        
+
+
+        <div th:include="layout :: footer">(footer)</div>
+        <script th:src="@{/scriptpedido.js}"></script>
+    </body>
+</html>
+
+
+<div class="modal" tabindex="-1" id="modalpedido">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Excluir pedido</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Confirma a exclusão do pedido?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+          <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+        </div>
+      </div>
+    </div>
+  </div>

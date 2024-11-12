@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head th:include="layout :: htmlhead"></head>
+    <body>
+        
+        <nav th:replace="layout :: menu">(menu)</nav>
+        <main class="container">
+            <h1>pedido</h1>
+            <form th:action="@{/pedidos}" 
+                    method="POST"
+                    th:object="${pedido}">
+
+                <input type="hidden" th:field="*{id}">
+
+
+                <div class="form-group">
+                    <label for="txtdata">Data do Pedido</label>
+                    <input id="txtdata"
+                        th:field="*{data}"
+                        class="form-control"
+                        type="date">
+                </div>
+
+                <button type="submit" 
+                class="form-control">Enviar</button>
+                
+
+            </form>
+
+
+        </main>
+        
+
+
+        <div th:include="layout :: footer">(footer)</div>
+    </body>
+</html>

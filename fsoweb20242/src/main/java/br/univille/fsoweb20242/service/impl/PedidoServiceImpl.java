@@ -3,11 +3,13 @@ package br.univille.fsoweb20242.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.univille.fsoweb20242.entity.Pedido;
 import br.univille.fsoweb20242.repository.PedidoRepository;
 import br.univille.fsoweb20242.service.PedidoService;
 
+@Service
 public class PedidoServiceImpl implements PedidoService{
 
     @Autowired
