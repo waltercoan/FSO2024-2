@@ -21,6 +21,32 @@
                         type="date">
                 </div>
 
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Itens de Pedidos Vinculados
+                        </h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="umItem : *{itens}">
+                                    <td th:text="${umItem.produto?.nome}"></td>
+                                    <td th:text="${umItem.quantidade}"></td>
+                                    <td th:text="${umItem.valor}"></td>
+                                
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                 <button type="submit" 
                 class="form-control">Enviar</button>
                 
