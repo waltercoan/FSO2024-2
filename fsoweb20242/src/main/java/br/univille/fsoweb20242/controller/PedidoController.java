@@ -70,8 +70,13 @@ public class PedidoController {
     public ModelAndView alterar(@PathVariable("id") long id){
         var pedido = service.getById(id);
 
-        HashMap<String,Object> dados = new HashMap<>();
+        var listaProdutos = produtoService.getAll();
+
+        HashMap<String,Object> dados = 
+            new HashMap<>();
         dados.put("pedido",pedido);
+        dados.put("novoItem", new ItemPedido());
+        dados.put("listaProdutos",listaProdutos);
         
 
         return new ModelAndView("pedido/form", dados);
