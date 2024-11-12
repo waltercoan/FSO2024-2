@@ -10,14 +10,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.univille.fsoweb20242.entity.ItemPedido;
 import br.univille.fsoweb20242.entity.Pedido;
 import br.univille.fsoweb20242.service.PedidoService;
+import br.univille.fsoweb20242.service.ProdutoService;
 
 @Controller
 @RequestMapping("/pedidos")
 public class PedidoController {
     @Autowired
     private PedidoService service;
+    @Autowired
+    private ProdutoService produtoService;
 
     @GetMapping
     public ModelAndView index(){
@@ -30,15 +34,33 @@ public class PedidoController {
     public ModelAndView novo(){
         var pedido = new Pedido();
 
+        var listaProdutos = produtoService.getAll();
+
         HashMap<String,Object> dados = 
             new HashMap<>();
         dados.put("pedido",pedido);
+        dados.put("novoItem", new ItemPedido());
+        dados.put("listaProdutos",listaProdutos);
         
         return new ModelAndView("pedido/form", 
                     dados);
 
     }
-    @PostMapping
+    @PostMapping(params = "incitem")
+    public ModelAndView incluirItem(Pedido pedido, 
+                ItemPedido novoItem){
+        pedido.getItens().add(novoItem);
+
+        var listaProdutos = produtoService.getAll();
+        HashMap<String,Object> dados = new HashMap<>();
+        dados.put("pedido",pedido);
+        dados.put("novoItem", new ItemPedido());
+        dados.put("listaProdutos",listaProdutos);
+
+        return new ModelAndView("pedido/form",dados);
+    }
+
+    @PostMapping(params = "save")
     public ModelAndView save(Pedido pedido){
         service.save(pedido);
         return new ModelAndView("redirect:/pedidos");
