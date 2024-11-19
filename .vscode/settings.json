@@ -4,5 +4,6 @@
     "plantuml.diagramsRoot": "./diagramas",
     "plantuml.exportOutDir": "./diagramas/png",
     "plantuml.exportFormat": "png",
-    "plantuml.exportSubFolder": false
+    "plantuml.exportSubFolder": false,
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
