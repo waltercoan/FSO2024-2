@@ -3,12 +3,17 @@ package br.univille.fsoweb20242.controller;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.NoHandlerFoundException;
+
 
 import br.univille.fsoweb20242.entity.Produto;
 import br.univille.fsoweb20242.service.ProdutoService;
@@ -20,6 +25,7 @@ public class ProdutoController {
     private ProdutoService service;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('APPROLE_Admin')")
     public ModelAndView index(){
         var listaProdutos = service.getAll();
         return new ModelAndView("produto/index",
@@ -62,5 +68,11 @@ public class ProdutoController {
             service.delete(id);
         }
         return new ModelAndView("redirect:/produtos");
+    }
+
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ModelAndView handle404Exception(AccessDeniedException ex) {
+        return new ModelAndView("erro/400");
     }
 }

@@ -4,7 +4,10 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +29,7 @@ public class ClienteController {
     private CidadeService cidadeService;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('APPROLE_Admin')")
     public ModelAndView index(){
         //chamar o banco de dados e fazer um select * from tabela
         var listaClientes = service.getAll();
@@ -75,5 +79,8 @@ public class ClienteController {
         return new ModelAndView("redirect:/clientes");
     }
 
-
+    @ExceptionHandler(AccessDeniedException.class)
+    public ModelAndView handle404Exception(AccessDeniedException ex) {
+        return new ModelAndView("erro/400");
+    }
 }

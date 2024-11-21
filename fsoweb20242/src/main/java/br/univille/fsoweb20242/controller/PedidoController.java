@@ -3,7 +3,10 @@ package br.univille.fsoweb20242.controller;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +28,7 @@ public class PedidoController {
     private ProdutoService produtoService;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('APPROLE_Admin')")
     public ModelAndView index(){
         var listaPedidos = service.getAll();
         return new ModelAndView("pedido/index",
@@ -105,5 +109,9 @@ public class PedidoController {
             service.delete(id);
         }
         return new ModelAndView("redirect:/pedidos");
+    }
+    @ExceptionHandler(AccessDeniedException.class)
+    public ModelAndView handle404Exception(AccessDeniedException ex) {
+        return new ModelAndView("erro/400");
     }
 }

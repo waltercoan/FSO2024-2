@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head th:include="layout :: htmlhead"></head>
+    <body>
+        
+        <nav th:replace="layout :: menu">(menu)</nav>
+        <main class="container">
+            <img alt="HTTP Status Code 400 Bad Request &amp; Dogs" 
+            class="block w-full h-166 sm:h-full mb-6 rounded-xl md:rounded-2xl" height="875" loading="lazy" sizes="100vw" 
+            src="https://http.dog/static/codes/dogs/large/403.jpg" srcset="https://http.dog/static/codes/dogs/medium/403.jpg 960w, https://http.dog/static/codes/dogs/large/403.jpg" width="1000">
+        </main>
+
+        <div th:include="layout :: footer">(footer)</div>
+    </body>
+</html>
