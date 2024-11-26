@@ -29,7 +29,7 @@ public class ClienteController {
     private CidadeService cidadeService;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('APPROLE_Admin')")
+    @PreAuthorize("hasAuthority('APPROLE_Admin') and hasAuthority('APPROLE_Read')")
     public ModelAndView index(){
         //chamar o banco de dados e fazer um select * from tabela
         var listaClientes = service.getAll();
@@ -81,6 +81,6 @@ public class ClienteController {
 
     @ExceptionHandler(AccessDeniedException.class)
     public ModelAndView handle404Exception(AccessDeniedException ex) {
-        return new ModelAndView("erro/400");
+        return new ModelAndView("erro/403");
     }
 }

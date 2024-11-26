@@ -73,6 +73,6 @@ public class ProdutoController {
 
     @ExceptionHandler(AccessDeniedException.class)
     public ModelAndView handle404Exception(AccessDeniedException ex) {
-        return new ModelAndView("erro/400");
+        return new ModelAndView("erro/403");
     }
 }
